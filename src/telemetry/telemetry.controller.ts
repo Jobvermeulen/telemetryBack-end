@@ -14,5 +14,8 @@ export class TelemetryController {
     }
 
     // Get by datetime
-
+    @Get("v1/telemetrylatest")
+    async getLatest(): Promise<Telemetry> {
+        return await this.telemetryService.getLatest();
+    }
 }

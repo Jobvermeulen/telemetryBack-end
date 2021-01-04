@@ -8,4 +8,9 @@ export class TelemetryRepository extends Repository<Telemetry>
     {
         return await this.find({});
     }
+
+    getLatest = async (): Promise<Telemetry> =>
+    {
+        return  await this.createQueryBuilder("telemetry").orderBy("id", "DESC").getOne();
+    }
 }

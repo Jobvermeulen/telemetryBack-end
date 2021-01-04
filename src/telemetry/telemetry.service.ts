@@ -13,6 +13,10 @@ export class TelemetryService{
         return await this.telemetryRepository.getAll();
     }
 
+    async getLatest(): Promise<Telemetry>{
+        return await this.telemetryRepository.getLatest();
+    }
+
     // Get by date
 
 
