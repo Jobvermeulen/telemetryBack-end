@@ -18,7 +18,9 @@ export class TelemetryService{
     }
 
     // Get by date
-
+    async getByDate(date): Promise<Telemetry[]> {
+        return await this.telemetryRepository.getByDate(date);
+    }
 
      // get by time
 

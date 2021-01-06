@@ -13,4 +13,9 @@ export class TelemetryRepository extends Repository<Telemetry>
     {
         return  await this.createQueryBuilder("telemetry").orderBy("id", "DESC").getOne();
     }
+
+    getByDate = async (date): Promise<Telemetry[]> =>
+    {
+        return await this.createQueryBuilder("telemetry").where("created_on like :date", { date:`%${date}%` }).getMany();
+    }
 }

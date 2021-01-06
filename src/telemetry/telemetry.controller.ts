@@ -1,4 +1,4 @@
-import {Controller, Get} from "@nestjs/common";
+import {Controller, Get, Param} from "@nestjs/common";
 import {TelemetryService} from "./telemetry.service";
 import {Telemetry} from "../entities/telemetry.entity";
 
@@ -17,5 +17,14 @@ export class TelemetryController {
     @Get("v1/telemetrylatest")
     async getLatest(): Promise<Telemetry> {
         return await this.telemetryService.getLatest();
+    }
+
+    // Get by datetime
+    @Get("v1/getByDate/:date")
+    async getByDate(@Param("date") date: string): Promise<Telemetry[]> {
+        const re =  /\-/gi;
+        date = date.replace(re, '/');
+        console.log(date + "%");
+        return await this.telemetryService.getByDate(date);
     }
 }
