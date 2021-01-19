@@ -10,12 +10,16 @@ export class TelemetryController {
 
     @Get("v1/telemetry")
     async getAll(): Promise<Telemetry[]> {
+        console.log('called!');
+        
         return await this.telemetryService.getAll();
     }
 
     // Get by datetime
     @Get("v1/telemetrylatest")
     async getLatest(): Promise<Telemetry> {
+        console.log('called!');
+
         return await this.telemetryService.getLatest();
     }
 
