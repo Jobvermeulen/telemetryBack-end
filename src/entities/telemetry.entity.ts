@@ -1,4 +1,5 @@
 import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import DateTimeFormat = Intl.DateTimeFormat;
 
 @Entity()
 export class Telemetry

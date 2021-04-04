@@ -5,8 +5,7 @@ import {Telemetry} from "../entities/telemetry.entity";
 
 @Injectable()
 export class TelemetryService{
-    constructor(@InjectRepository(TelemetryRepository)
-    private readonly telemetryRepository: TelemetryRepository,)
+    constructor(@InjectRepository(TelemetryRepository) private readonly telemetryRepository: TelemetryRepository )
     { }
 
     async getAll(): Promise<Telemetry[]> {
@@ -20,6 +19,11 @@ export class TelemetryService{
     // Get by date
     async getByDate(date): Promise<Telemetry[]> {
         return await this.telemetryRepository.getByDate(date);
+    }
+
+    // Post telemetry
+    async postTelemetry(telemetry:Telemetry) {
+        return await this.telemetryRepository.postTelemetry(telemetry);
     }
 
      // get by time

@@ -1,4 +1,4 @@
-import {Controller, Get, Param} from "@nestjs/common";
+import {Body, Controller, Get, Param, Post} from "@nestjs/common";
 import {TelemetryService} from "./telemetry.service";
 import {Telemetry} from "../entities/telemetry.entity";
 
@@ -13,6 +13,13 @@ export class TelemetryController {
         console.log('called!');
         
         return await this.telemetryService.getAll();
+    }
+
+    @Post("v1/telemetry")
+    async postTelemetry(@Body() telemetry:Telemetry) {
+        console.log(telemetry);
+
+        return await this.telemetryService.postTelemetry(telemetry);
     }
 
     // Get by datetime
@@ -31,4 +38,6 @@ export class TelemetryController {
         console.log(date + "%");
         return await this.telemetryService.getByDate(date);
     }
+
+
 }
